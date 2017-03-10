@@ -41,16 +41,16 @@ class $CONTROLLER$Controller extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $$PLURAL$ = $this->repository->all();
+        $data = $this->repository->paginate();
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $$PLURAL$,
+                'data' =>   $data,
             ]);
         }
 
-        return view('$PLURAL$.index', compact('$PLURAL$'));
+        return view('$PLURAL$.index', compact('data'));
     }
 
     /**
@@ -70,7 +70,7 @@ class $CONTROLLER$Controller extends Controller
             $$SINGULAR$ = $this->repository->create($request->all());
 
             $response = [
-                'message' => '$CLASS$ created.',
+                'message' => '$CLASS$ cadastrada com sucesso!',
                 'data'    => $$SINGULAR$->toArray(),
             ];
 
@@ -79,7 +79,7 @@ class $CONTROLLER$Controller extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('$PLURAL$.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -88,7 +88,7 @@ class $CONTROLLER$Controller extends Controller
                 ]);
             }
 
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+            return redirect()->route('$PLURAL$.index')->withErrors($e->getMessageBag())->withInput();
         }
     }
 
@@ -125,9 +125,9 @@ class $CONTROLLER$Controller extends Controller
     public function edit($id)
     {
 
-        $$SINGULAR$ = $this->repository->find($id);
+        $data = $this->repository->find($id);
 
-        return view('$PLURAL$.edit', compact('$SINGULAR$'));
+        return view('$PLURAL$.edit', compact('data'));
     }
 
 
@@ -145,11 +145,11 @@ class $CONTROLLER$Controller extends Controller
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
-
-            $$SINGULAR$ = $this->repository->update($request->all(), $id);
+            $data = $request->all();
+            $$SINGULAR$ = $this->repository->update($data, $id);
 
             $response = [
-                'message' => '$CLASS$ updated.',
+                'message' => '$CLASS$ atualizada com sucesso!',
                 'data'    => $$SINGULAR$->toArray(),
             ];
 
@@ -158,7 +158,7 @@ class $CONTROLLER$Controller extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('$PLURAL$.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {
@@ -169,7 +169,7 @@ class $CONTROLLER$Controller extends Controller
                 ]);
             }
 
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+            return redirect()->route('$PLURAL$.index')->withErrors($e->getMessageBag())->withInput();
         }
     }
 
@@ -188,11 +188,11 @@ class $CONTROLLER$Controller extends Controller
         if (request()->wantsJson()) {
 
             return response()->json([
-                'message' => '$CLASS$ deleted.',
+                'message' => '$CLASS$ apagada com sucesso!',
                 'deleted' => $deleted,
             ]);
         }
 
-        return redirect()->back()->with('message', '$CLASS$ deleted.');
+        return redirect()->route('$PLURAL$.index')->with('message', '$CLASS$ deleted.');
     }
 }
