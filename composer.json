@@ -6,11 +6,11 @@
   "authors": [
     {
       "name": "Thiago Dionizio",
-      "email": "thiago.o.dionizio@gmail.com",
+      "email": "thiago.o.dionizio@gmail.com"
     }
   ],
   "support": {
-    "email": "thiago.o.dionizio@gmail.com",
+    "email": "thiago.o.dionizio@gmail.com"
   },
   "require": {
     "illuminate/http": "~5.0",
