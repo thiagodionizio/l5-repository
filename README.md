@@ -50,7 +50,7 @@ Laravel 5.4 Repositories is used to abstract the data layer, making our applicat
 Execute the following command to get the latest version of the package:
 
 ```terminal
-composer require thiagodionizio/l5-repository
+composer require thiagodionizio/l5.4-repository
 ```
 
 ### Laravel
