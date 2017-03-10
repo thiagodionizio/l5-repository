@@ -1,20 +1,16 @@
 {
-  "name": "prettus/l5-repository",
-  "description": "Laravel 5 - Repositories to  the database layer",
+  "name": "thiagodionizio/l5.4-repository",
+  "description": "Pacote de Repository Laravel 5.4 adaptado",
   "keywords": ["laravel", "repository", "eloquent", "model", "cache"],
   "license": "MIT",
   "authors": [
     {
-      "name": "Anderson Andrade",
-      "email": "contato@andersonandra.de",
-      "role": "Developer"
+      "name": "Thiago Dionizio",
+      "email": "thiago.o.dionizio@gmail.com",
     }
   ],
   "support": {
-    "email": "contato@andersonandra.de",
-    "issues":"https://github.com/andersao/l5-repository/issues",
-    "wiki":"https://github.com/andersao/l5-repository",
-    "source":"https://github.com/andersao/l5-repository"
+    "email": "thiago.o.dionizio@gmail.com",
   },
   "require": {
     "illuminate/http": "~5.0",
